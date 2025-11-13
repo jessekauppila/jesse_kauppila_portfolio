@@ -54,7 +54,7 @@ export default async function HomePage() {
                     href="#"
                     className="nav_link on-accent-primary w-inline-block"
                   >
-                    <div>Code</div>
+                    <div>Software Development</div>
                   </a>
                 </li>
                 <li className="nav_menu-list-item">
@@ -62,7 +62,7 @@ export default async function HomePage() {
                     href="#"
                     className="nav_link on-accent-primary w-inline-block"
                   >
-                    <div>Design/Manufacturing/Fabrication</div>
+                    <div>Manufacturing/Fabrication/Design</div>
                   </a>
                 </li>
                 <li className="nav_menu-list-item">
@@ -70,7 +70,7 @@ export default async function HomePage() {
                     href="#"
                     className="nav_link on-accent-primary w-inline-block"
                   >
-                    <div>Robotics</div>
+                    <div>Industrial Robotics</div>
                   </a>
                 </li>
                 <li className="nav_menu-list-item">
@@ -166,7 +166,7 @@ export default async function HomePage() {
       <ProjectSection title="Software Projects" projects={web} />
       <ProjectSection title="Fabrication Projects" projects={fab} />
       <ProjectSection title="Art Projects" projects={art} />
-      <section>
+      {/* <section>
         <div className="container">
           <div className="container">
             <h1 className="heading_h1">Software Projects</h1>
@@ -238,7 +238,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section>
         <div className="container">
           <div className="container">

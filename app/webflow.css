@@ -924,10 +924,15 @@ textarea.w-select {
   position: relative;
   height: 500px;
   text-align: center;
-  background: #dddddd;
+  background: transparent;
   clear: both;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@media screen and (max-width: 767px) {
+  .w-slider {
+    height: 300px;
+  }
 }
 .w-slider-mask {
   position: relative;
