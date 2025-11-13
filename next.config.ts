@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  experimental: { typedRoutes: true },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'media.graphassets.com' },
+    ],
+  },
 };
 
 export default nextConfig;
