@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run copy-jquery && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "copy-jquery": "cp node_modules/jquery/dist/jquery.min.js public/jquery.min.js",
+    "postinstall": "npm run copy-jquery"
   },
   "dependencies": {
     "jquery": "^3.7.1",

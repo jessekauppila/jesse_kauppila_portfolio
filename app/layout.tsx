@@ -17,6 +17,7 @@ export default function RootLayout({
       lang="en"
       data-wf-page="690baa0cb1dfa04fed364b4d"
       data-wf-site="690baa0bb1dfa04fed364af7"
+      suppressHydrationWarning
     >
       <body>
         {children}
@@ -85,12 +86,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <Script
-          src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=690baa0bb1dfa04fed364af7"
-          integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        <Script src="/jquery.min.js" strategy="afterInteractive" />
         <Script src="/webflow.js" strategy="afterInteractive" />
       </body>
     </html>
