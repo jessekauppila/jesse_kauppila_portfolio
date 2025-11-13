@@ -1,15 +1,26 @@
+import type { Project } from '@/types/project';
+import ProjectCardPro from '@/components/ProjectCardPro';
 
-import type { Project, Category } from '@/types/project'
-import ProjectCardPro from '@/components/ProjectCardPro'
-
-export default function ProjectSection({ title, projects }:{ title: string, projects: Project[] }) {
-  if (!projects.length) return null
+export default function ProjectSection({
+  title,
+  projects,
+}: {
+  title: string;
+  projects: Project[];
+}) {
+  if (!projects.length) return null;
   return (
-    <section className="mb-12">
-      <h2 className="text-xl font-medium mb-4">{title}</h2>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map(p => <ProjectCardPro key={p.slug} project={p} />)}
+    <section>
+      <div className="container">
+        <div className="container">
+          <h1 className="heading_h1">{title}</h1>
+          <div className="w-layout-grid grid_3-col gap-xsmall text-align_center">
+            {projects.map((p) => (
+              <ProjectCardPro key={p.slug} project={p} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
-  )
+  );
 }

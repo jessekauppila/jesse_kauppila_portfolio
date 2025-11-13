@@ -5142,6 +5142,10 @@
   display: grid;
 }
 
+.grid_3-col.gap-xsmall.text-align_center > .card {
+  grid-column: span 2;
+}
+
 .gap-xsmall {
   grid-column-gap: var(--_sizes---gap--xs-gap);
   grid-row-gap: var(--_sizes---gap--xs-gap);
@@ -5569,6 +5573,7 @@
 }
 
 .section-3 {
+  flex: 0 25%;
   display: block;
 }
 

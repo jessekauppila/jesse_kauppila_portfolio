@@ -163,9 +163,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      {/* <ProjectSection title="Software Projects" projects={web} /> */}
-      {/* <ProjectSection title="Fabrication Projects" projects={fab} />
-      <ProjectSection title="Art Projects" projects={art} /> */}
+      <ProjectSection title="Software Projects" projects={web} />
+      <ProjectSection title="Fabrication Projects" projects={fab} />
+      <ProjectSection title="Art Projects" projects={art} />
       <section>
         <div className="container">
           <div className="container">
