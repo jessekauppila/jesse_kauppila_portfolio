@@ -3,9 +3,10 @@ import ProjectSection from '@/components/ProjectSection';
 
 export default async function HomePage() {
   const projects = await fetchProjects();
-  const web = projects.filter((p) => p.category === 'web');
+  const software = projects.filter((p) => p.category === 'software');
   const fab = projects.filter((p) => p.category === 'fabrication');
   const art = projects.filter((p) => p.category === 'art');
+  //const software = projects.filter((p) => p.category === 'software');
 
   return (
     <>
@@ -163,7 +164,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      <ProjectSection title="Software Projects" projects={web} />
+      <ProjectSection title="Software Projects" projects={software} />
       <ProjectSection title="Fabrication Projects" projects={fab} />
       <ProjectSection title="Art Projects" projects={art} />
       {/* <section>
