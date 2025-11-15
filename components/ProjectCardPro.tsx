@@ -8,9 +8,23 @@
  * - Rich text description (with links, PDFs, formatting support)
  */
 
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import type { Project } from '@/types/project';
 import RichTextRenderer from '@/components/RichText';
+
+// Type declaration for Webflow global object
+declare global {
+  interface Window {
+    Webflow?: {
+      redraw?: {
+        up?: () => void;
+      };
+    };
+  }
+}
 
 export default function ProjectCardPro({
   project,
@@ -22,6 +36,58 @@ export default function ProjectCardPro({
     (img) => img && img.src
   );
 
+  // Ref to the slider element for Webflow reinitialization
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Reinitialize Webflow slider after component mounts
+  useEffect(() => {
+    if (!sliderRef.current || validImages.length === 0) return;
+
+    // Function to initialize Webflow slider
+    const initSlider = () => {
+      // Check if Webflow is available
+      if (typeof window !== 'undefined' && window.Webflow) {
+        const Webflow = window.Webflow;
+
+        // Trigger Webflow to reinitialize by calling redraw
+        // This is the recommended way to reinitialize Webflow components
+        if (Webflow.redraw && Webflow.redraw.up) {
+          Webflow.redraw.up();
+        }
+
+        // Also trigger a resize event which causes Webflow to recalculate slider dimensions
+        // This is what happens when you resize the window and it fixes the issue
+        if (typeof window.dispatchEvent === 'function') {
+          window.dispatchEvent(new Event('resize'));
+        }
+      }
+    };
+
+    // Wait for both DOM and Webflow to be ready
+    const initialize = () => {
+      // Use a small delay to ensure the slider DOM is fully rendered
+      setTimeout(initSlider, 100);
+    };
+
+    // If Webflow is already loaded, initialize immediately
+    if (typeof window !== 'undefined' && window.Webflow) {
+      initialize();
+    } else {
+      // Wait for Webflow to load
+      const checkWebflow = setInterval(() => {
+        if (typeof window !== 'undefined' && window.Webflow) {
+          clearInterval(checkWebflow);
+          initialize();
+        }
+      }, 50);
+
+      // Cleanup interval after 5 seconds
+      setTimeout(() => clearInterval(checkWebflow), 5000);
+
+      return () => clearInterval(checkWebflow);
+    }
+  }, [validImages.length]); // Re-run if images change
+
   return (
     <div className="card card_body padding-bottom_none on-secondary">
       <div className="flex_vertical gap-small height_100percent">
@@ -29,6 +95,7 @@ export default function ProjectCardPro({
           {/* Image slider - shows project images */}
           {validImages.length > 0 ? (
             <div
+              ref={sliderRef}
               data-delay="4000"
               data-animation="slide"
               className="slider-2 w-slider"
@@ -85,9 +152,7 @@ export default function ProjectCardPro({
               {/* Left column: Title and metadata */}
               <section>
                 <h1 className="heading_h1 heading_h2">
-                  <Link href={`/project/${project.slug}`}>
-                    {project.title}
-                  </Link>
+                  {project.title}
                 </h1>
                 {/* Tools/Scope - with improved styling */}
                 {project.scope && (
