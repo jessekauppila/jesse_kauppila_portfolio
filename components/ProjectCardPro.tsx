@@ -1,11 +1,23 @@
+/**
+ * Project Card Component
+ *
+ * Displays a project card with:
+ * - Image slider (if images exist)
+ * - Project title (link to project detail page)
+ * - Tools/Scope and Client information
+ * - Rich text description (with links, PDFs, formatting support)
+ */
+
 import Link from 'next/link';
 import type { Project } from '@/types/project';
+import RichTextRenderer from '@/components/RichText';
 
 export default function ProjectCardPro({
   project,
 }: {
   project: Project;
 }) {
+  // Filter out any invalid images (without src)
   const validImages = (project.images || []).filter(
     (img) => img && img.src
   );
@@ -14,6 +26,7 @@ export default function ProjectCardPro({
     <div className="card card_body padding-bottom_none on-secondary">
       <div className="flex_vertical gap-small height_100percent">
         <div className="w-layout-grid grid">
+          {/* Image slider - shows project images */}
           {validImages.length > 0 ? (
             <div
               data-delay="4000"
@@ -65,26 +78,48 @@ export default function ProjectCardPro({
               </div>
             </div>
           )}
+
+          {/* Project metadata and description */}
           <section className="section-3">
             <div className="w-layout-grid grid-2">
+              {/* Left column: Title and metadata */}
               <section>
                 <h1 className="heading_h1 heading_h2">
                   <Link href={`/project/${project.slug}`}>
                     {project.title}
                   </Link>
                 </h1>
+                {/* Tools/Scope - with improved styling */}
                 {project.scope && (
-                  <p className="subheading">Tools: {project.scope}</p>
+                  <p className="subheading">
+                    <strong>Tools:</strong> {project.scope}
+                  </p>
                 )}
+                {/* Client - with improved styling */}
                 {project.client && (
                   <p className="subheading">
-                    Client: {project.client}
+                    <strong>Client:</strong> {project.client}
                   </p>
                 )}
               </section>
+
+              {/* Right column: Description */}
               {project.description ? (
-                <p className="paragraph">{project.description}</p>
+                // Use RichText component if rich text is available
+                // This supports links, PDFs, formatting, etc.
+                <div className="paragraph">
+                  <RichTextRenderer content={project.description} />
+                </div>
+              ) : project.descriptionText ? (
+                // Fallback to plain text if rich text isn't available
+                <p
+                  className="paragraph"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {project.descriptionText}
+                </p>
               ) : (
+                // Empty paragraph if no description
                 <p className="paragraph"></p>
               )}
             </div>
