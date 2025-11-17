@@ -10,10 +10,10 @@
 
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/types/project';
 import RichTextRenderer from '@/components/RichText';
+import { transformImageUrl } from '@/lib/imageUtils';
 
 // Type declaration for Webflow global object
 declare global {
@@ -36,12 +36,31 @@ export default function ProjectCardPro({
     (img) => img && img.src
   );
 
+  // Detect if mobile viewport
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Transform image URLs for optimal sizing
+  const transformedImages = validImages.map((img) => ({
+    ...img,
+    src: transformImageUrl(img.src, 500, isMobile),
+  }));
+
   // Ref to the slider element for Webflow reinitialization
   const sliderRef = useRef<HTMLDivElement>(null);
 
   // Reinitialize Webflow slider after component mounts
   useEffect(() => {
-    if (!sliderRef.current || validImages.length === 0) return;
+    if (!sliderRef.current || transformedImages.length === 0) return;
 
     // Function to initialize Webflow slider
     const initSlider = () => {
@@ -86,14 +105,14 @@ export default function ProjectCardPro({
 
       return () => clearInterval(checkWebflow);
     }
-  }, [validImages.length]); // Re-run if images change
+  }, [transformedImages.length]); // Re-run if images change
 
   return (
     <div className="card card_body padding-bottom_none on-secondary">
       <div className="flex_vertical gap-small height_100percent">
         <div className="w-layout-grid grid">
           {/* Image slider - shows project images */}
-          {validImages.length > 0 ? (
+          {transformedImages.length > 0 ? (
             <div
               ref={sliderRef}
               data-delay="4000"
@@ -109,7 +128,7 @@ export default function ProjectCardPro({
               data-infinite="true"
             >
               <div className="w-slider-mask">
-                {validImages.map((img, index) => (
+                {transformedImages.map((img, index) => (
                   <div
                     key={img.src + index}
                     className={
@@ -119,7 +138,7 @@ export default function ProjectCardPro({
                     <img
                       src={img.src}
                       alt={img.alt || ''}
-                      loading="lazy"
+                      loading={index === 0 ? 'eager' : 'lazy'}
                     />
                   </div>
                 ))}

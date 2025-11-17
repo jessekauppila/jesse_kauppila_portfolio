@@ -1,3 +1,130 @@
 @import './normalize.css';
 @import './webflow.css';
 @import './jesse-kauppila-portfolio.webflow.css';
+
+/* Embla Carousel Styles */
+.embla {
+  position: relative !important;
+  width: 100% !important;
+  height: 500px !important;
+  overflow: hidden;
+  background: #f0f0f0; /* Temporary background to see container */
+}
+
+@media screen and (max-width: 767px) {
+  .embla {
+    height: 300px !important;
+  }
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.embla__container {
+  display: flex !important;
+  height: 100% !important;
+  width: 100% !important;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100% !important;
+  min-width: 0;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+}
+
+.embla__slide__img {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  overflow: hidden;
+}
+
+/* Next.js Image with fill prop requires parent to have position: relative */
+.embla__slide__img > img,
+.embla__slide__img > span {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Navigation Buttons */
+.embla__button {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.embla__button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.embla__button:active {
+  opacity: 0.8;
+}
+
+.embla__button--prev {
+  left: 10px;
+}
+
+.embla__button--next {
+  right: 10px;
+}
+
+.embla__button__svg {
+  width: 20px;
+  height: 20px;
+  color: #333;
+}
+
+/* Navigation Dots */
+.embla__dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.embla__dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.embla__dot--selected {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.3);
+}
