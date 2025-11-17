@@ -13,6 +13,7 @@
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.2",
     "@graphcms/rich-text-types": "^0.5.1",
+    "embla-carousel-react": "^8.6.0",
     "jquery": "^3.7.1",
     "next": "16.0.1",
     "react": "19.2.0",
