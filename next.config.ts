@@ -4,7 +4,14 @@ const nextConfig = {
   experimental: { typedRoutes: true },
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'media.graphassets.com' },
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.graphassets.com',
+      },
     ],
   },
 };

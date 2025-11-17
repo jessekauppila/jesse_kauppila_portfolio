@@ -1,3 +1,22 @@
 @import './normalize.css';
 @import './webflow.css';
 @import './jesse-kauppila-portfolio.webflow.css';
+
+/* Style images within Webflow slider to fit properly */
+.slider-2 .w-slide img,
+.slider-2 .slide img,
+.w-slide img.slider-image,
+.slide img.slider-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  max-width: 100% !important;
+}
+
+/* Ensure slide containers properly constrain images */
+.slider-2 .w-slide,
+.slider-2 .slide {
+  overflow: hidden;
+}

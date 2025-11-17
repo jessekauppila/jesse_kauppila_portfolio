@@ -119,7 +119,8 @@ export default function ProjectCardPro({
                     <img
                       src={img.src}
                       alt={img.alt || ''}
-                      loading="lazy"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      className="slider-image"
                     />
                   </div>
                 ))}
