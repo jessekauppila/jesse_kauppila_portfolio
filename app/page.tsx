@@ -1,3 +1,5 @@
+//this is the main page
+
 import {
   fetchProjects,
   GraphQLFetchError,
