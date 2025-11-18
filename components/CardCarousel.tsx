@@ -8,13 +8,20 @@ export default function CardCarousel({
 }: {
   images: ImageItem[];
 }) {
+  // Hooks must be called before any conditional returns
+  const [i, setI] = useState(0);
+
   // Filter out images without valid src
   const validImages = (images || []).filter((img) => img && img.src);
+
+  const next = () => setI((i + 1) % validImages.length);
+  const prev = () =>
+    setI((i - 1 + validImages.length) % validImages.length);
 
   // If no valid images, return a placeholder
   if (validImages.length === 0) {
     return (
-      <div className="relative w-full h-64 sm:h-80 overflow-hidden rounded-t-2xl bg-gray-100 flex items-center justify-center">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl bg-gray-100 flex items-center justify-center">
         <span className="text-gray-400 text-sm">
           No image available
         </span>
@@ -22,17 +29,12 @@ export default function CardCarousel({
     );
   }
 
-  const [i, setI] = useState(0);
-  const next = () => setI((i + 1) % validImages.length);
-  const prev = () =>
-    setI((i - 1 + validImages.length) % validImages.length);
-
   const img = validImages[i];
 
   // Safety check - should not happen after filtering, but just in case
   if (!img || !img.src) {
     return (
-      <div className="relative w-full h-64 sm:h-80 overflow-hidden rounded-t-2xl bg-gray-100 flex items-center justify-center">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl bg-gray-100 flex items-center justify-center">
         <span className="text-gray-400 text-sm">
           No image available
         </span>
@@ -42,7 +44,7 @@ export default function CardCarousel({
 
   return (
     <div className="relative">
-      <div className="relative w-full h-64 sm:h-80 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl">
         <Image
           src={img.src}
           alt={img.alt || ''}

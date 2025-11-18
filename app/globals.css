@@ -2,6 +2,18 @@
 @import './webflow.css';
 @import './jesse-kauppila-portfolio.webflow.css';
 
+/* Set 16:9 aspect ratio for slider-2 instead of fixed height */
+.slider-2.w-slider {
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+/* Ensure slider mask respects aspect ratio */
+.slider-2 .w-slider-mask {
+  height: 100%;
+}
+
 /* Style images within Webflow slider to fit properly */
 .slider-2 .w-slide img,
 .slider-2 .slide img,
@@ -19,4 +31,5 @@
 .slider-2 .w-slide,
 .slider-2 .slide {
   overflow: hidden;
+  height: 100%;
 }
