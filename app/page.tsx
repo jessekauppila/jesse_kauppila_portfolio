@@ -147,13 +147,13 @@ export default async function HomePage() {
                 id="w-node-_4a9414b7-ae42-3064-7d06-d31acfde2a8f-cfde2a8c"
                 className="header w-node-b016f715-7923-3c45-50ce-6d4d3fdf6049-ed364b4d"
               >
-                <h1 className="heading_h1">
-                  Designing unique digital journeys.
-                </h1>
+                <h1 className="heading_h1">Project Portfolio</h1>
                 <p className="paragraph">
-                  Dive into a selection of projects that blend
-                  creativity with functionality. Experience sleek,
-                  modern aesthetics tailored for you.asdfas
+                  I have extensive experience at the cross section of
+                  design engineering, custom complex robotic
+                  fabrication/manufacturing, and software development.
+                  These are some of the projects I&apos;ve been
+                  involved in.
                   <br />
                   <br />
                   <br />‍
@@ -255,9 +255,22 @@ export default async function HomePage() {
                   <section id="w-node-_4cccf264-cc36-2aa7-67be-466e60c97e6c-ed364b4d">
                     <h1 className="heading_h1 heading_h2">About</h1>
                     <p className="paragraph">
-                      Dive into a selection of projects that blend
-                      creativity with functionality. Experience sleek,
-                      modern aesthetics tailored for you.asdfas
+                      While getting an MFA at Carnegie Mellon my art
+                      projects led me to the power of robotics. I then
+                      began a career using robots professionally to
+                      fabricate a variety of art and architectural
+                      projects. That work led to aerospace research
+                      and development at Joby Aviation. To help with
+                      these projects I developed a variety of software
+                      tools including robotic simulations, computer
+                      vision, and design optimizations. At Joby I
+                      began working in software development full time.
+                      There I developed a manufacturing data analytics
+                      and visualization platform. Most recently
+                      I&apos;ve been working on a weather app for the
+                      Northwest Avalanche Center. I continue to work
+                      on a variety of personal software, fabrication,
+                      and art projects.
                       <br />
                       <br />
                       <br />‍
