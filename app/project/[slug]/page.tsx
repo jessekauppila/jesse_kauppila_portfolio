@@ -8,7 +8,7 @@
  * - Project images in a grid layout
  */
 
-import { fetchProjects } from '@/lib/fetchProjects';
+import { fetchProjects, GraphQLFetchError } from '@/lib/fetchProjects';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import RichTextRenderer from '@/components/RichText';
@@ -19,7 +19,31 @@ export default async function ProjectPage({
   params: { slug: string };
 }) {
   // Fetch all projects and find the one matching the slug
-  const projects = await fetchProjects();
+  let projects;
+  try {
+    projects = await fetchProjects();
+  } catch (error) {
+    console.error('[ProjectPage] Failed to fetch projects:', error);
+    // Return error UI
+    return (
+      <div className="min-h-screen flex items-center justify-center p-8">
+        <div className="max-w-md text-center">
+          <h1 className="text-2xl font-semibold mb-4">Unable to load project</h1>
+          <p className="text-gray-600 mb-4">
+            {error instanceof GraphQLFetchError
+              ? error.message
+              : 'An error occurred while fetching the project. Please try again later.'}
+          </p>
+          {process.env.NODE_ENV === 'development' && error instanceof Error && (
+            <pre className="text-xs text-left bg-gray-100 p-4 rounded mt-4 overflow-auto">
+              {error.stack}
+            </pre>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   const project = projects.find((p) => p.slug === params.slug);
 
   // If project not found, show 404

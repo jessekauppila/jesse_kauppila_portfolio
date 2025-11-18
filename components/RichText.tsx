@@ -74,16 +74,33 @@ export default function RichTextRenderer({
 
           // Links - use Next.js Link component for better performance
           // Supports opening in new tab if specified in Hygraph
-          a: ({ children, href, openInNewTab }) => (
-            <Link
-              href={href || '#'}
-              target={openInNewTab ? '_blank' : undefined}
-              rel={openInNewTab ? 'noopener noreferrer' : undefined}
-              className="text-blue-600 hover:text-blue-800 underline"
-            >
-              {children}
-            </Link>
-          ),
+          a: ({ children, href, openInNewTab }) => {
+            const linkHref = href || '#';
+            // Use Next.js Link for internal routes, regular <a> for external URLs
+            if (linkHref.startsWith('/') && linkHref !== '#') {
+              return (
+                <Link
+                  href={linkHref as any}
+                  target={openInNewTab ? '_blank' : undefined}
+                  rel={openInNewTab ? 'noopener noreferrer' : undefined}
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  {children}
+                </Link>
+              );
+            }
+            // Use regular <a> tag for external URLs or fallback
+            return (
+              <a
+                href={linkHref}
+                target={openInNewTab ? '_blank' : undefined}
+                rel={openInNewTab ? 'noopener noreferrer' : undefined}
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                {children}
+              </a>
+            );
+          },
 
           // Lists - bulleted and numbered
           ul: ({ children }) => (

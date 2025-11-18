@@ -1,8 +1,38 @@
-import { fetchProjects } from '@/lib/fetchProjects';
+import {
+  fetchProjects,
+  GraphQLFetchError,
+} from '@/lib/fetchProjects';
 import ProjectSection from '@/components/ProjectSection';
 
 export default async function HomePage() {
-  const projects = await fetchProjects();
+  let projects;
+  try {
+    projects = await fetchProjects();
+  } catch (error) {
+    console.error('[HomePage] Failed to fetch projects:', error);
+    // Return error UI
+    return (
+      <div className="min-h-screen flex items-center justify-center p-8">
+        <div className="max-w-md text-center">
+          <h1 className="text-2xl font-semibold mb-4">
+            Unable to load projects
+          </h1>
+          <p className="text-gray-600 mb-4">
+            {error instanceof GraphQLFetchError
+              ? error.message
+              : 'An error occurred while fetching projects. Please try again later.'}
+          </p>
+          {process.env.NODE_ENV === 'development' &&
+            error instanceof Error && (
+              <pre className="text-xs text-left bg-gray-100 p-4 rounded mt-4 overflow-auto">
+                {error.stack}
+              </pre>
+            )}
+        </div>
+      </div>
+    );
+  }
+
   const software = projects.filter((p) => p.category === 'software');
   const fab = projects.filter((p) => p.category === 'fabrication');
   const art = projects.filter((p) => p.category === 'art');
