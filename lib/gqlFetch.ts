@@ -17,6 +17,7 @@ export async function gqlFetch<T>(
         : {}),
     },
     body: JSON.stringify({ query, variables }),
+    cache: 'no-store', // Disable caching to ensure fresh data from Hygraph
   });
 
   let json: GraphQLResponse<T>;
