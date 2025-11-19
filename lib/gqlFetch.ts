@@ -17,7 +17,7 @@ export async function gqlFetch<T>(
         : {}),
     },
     body: JSON.stringify({ query, variables }),
-    cache: 'no-store', // Disable caching to ensure fresh data from Hygraph
+    next: { revalidate: 60 }, // Revalidate every 60 seconds (ISR)
   });
 
   let json: GraphQLResponse<T>;

@@ -13,6 +13,9 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import RichTextRenderer from '@/components/RichText';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 export default async function ProjectPage({
   params,
 }: {

@@ -6,6 +6,9 @@ import {
 } from '@/lib/fetchProjects';
 import ProjectSection from '@/components/ProjectSection';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 export default async function HomePage() {
   let projects;
   try {
