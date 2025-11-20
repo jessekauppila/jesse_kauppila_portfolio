@@ -9,6 +9,14 @@
   width: 100%;
 }
 
+/* Remove margins on mobile so slider extends to card edges */
+@media (max-width: 767px) {
+  .card .slider-2.w-slider {
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
 /* Ensure slider mask respects aspect ratio */
 .slider-2 .w-slider-mask {
   height: 100%;
