@@ -10,8 +10,7 @@
 
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/types/project';
 import RichTextRenderer from '@/components/RichText';
 
@@ -38,6 +37,27 @@ export default function ProjectCardPro({
 
   // Ref to the slider element for Webflow reinitialization
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  // State for description expand/collapse
+  // Default to expanded on tablet/PC, collapsed on mobile
+  const [isExpanded, setIsExpanded] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 768; // Tablet breakpoint
+    }
+    return true; // Default to expanded for SSR
+  });
+
+  // Update expanded state based on window size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsExpanded(true); // Auto-expand on tablet/PC
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Reinitialize Webflow slider after component mounts
   useEffect(() => {
@@ -169,21 +189,86 @@ export default function ProjectCardPro({
                 )}
               </section>
 
-              {/* Right column: Description */}
-              {project.description ? (
-                // Use RichText component if rich text is available
-                // This supports links, PDFs, formatting, etc.
+              {/* Right column: Description with expandable dropdown */}
+              {project.description || project.descriptionText ? (
                 <div className="paragraph">
-                  <RichTextRenderer content={project.description} />
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="description-toggle"
+                    aria-expanded={isExpanded}
+                    aria-label={
+                      isExpanded
+                        ? 'Collapse description'
+                        : 'Expand description'
+                    }
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      margin: '0 auto 0.5rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      color: 'inherit',
+                      opacity: 0.4,
+                      transition:
+                        'opacity 0.2s ease, transform 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '0.7';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0.4';
+                    }}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{
+                        transform: isExpanded
+                          ? 'rotate(180deg)'
+                          : 'rotate(0deg)',
+                        transition: 'transform 0.3s ease',
+                      }}
+                    >
+                      <path
+                        d="M4 6L8 10L12 6"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                      transition: 'grid-template-rows 0.3s ease-out',
+                      overflow: 'hidden',
+                    }}
+                    className="description-content"
+                  >
+                    <div style={{ minHeight: 0 }}>
+                      {project.description ? (
+                        // Use RichText component if rich text is available
+                        // This supports links, PDFs, formatting, etc.
+                        <RichTextRenderer
+                          content={project.description}
+                        />
+                      ) : (
+                        // Fallback to plain text if rich text isn't available
+                        <p style={{ whiteSpace: 'pre-line' }}>
+                          {project.descriptionText}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              ) : project.descriptionText ? (
-                // Fallback to plain text if rich text isn't available
-                <p
-                  className="paragraph"
-                  style={{ whiteSpace: 'pre-line' }}
-                >
-                  {project.descriptionText}
-                </p>
               ) : (
                 // Empty paragraph if no description
                 <p className="paragraph"></p>
