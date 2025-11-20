@@ -95,7 +95,7 @@ export default async function HomePage() {
               >
                 <li className="nav_menu-list-item">
                   <a
-                    href="#"
+                    href="#software"
                     className="nav_link on-accent-primary w-inline-block"
                   >
                     <div>Software Development</div>
@@ -103,28 +103,24 @@ export default async function HomePage() {
                 </li>
                 <li className="nav_menu-list-item">
                   <a
-                    href="#"
+                    href="#fabrication"
                     className="nav_link on-accent-primary w-inline-block"
                   >
-                    <div>Manufacturing/Fabrication/Design</div>
+                    <div>
+                      Manufacturing/Fabrication/Design/Robotics
+                    </div>
                   </a>
                 </li>
-                <li className="nav_menu-list-item">
-                  <a
-                    href="#"
-                    className="nav_link on-accent-primary w-inline-block"
-                  >
-                    <div>Industrial Robotics</div>
-                  </a>
-                </li>
-                <li className="nav_menu-list-item">
+
+                {/* <li className="nav_menu-list-item">
                   <a
                     href="#"
                     className="nav_link on-accent-primary w-inline-block"
                   >
                     <div>Art</div>
                   </a>
-                </li>
+                </li> */}
+
                 <li className="nav_menu-list-item">
                   <a
                     href="#"
@@ -133,6 +129,7 @@ export default async function HomePage() {
                     <div>About</div>
                   </a>
                 </li>
+
                 <li className="nav_menu-list-item">
                   <a
                     href="#"
@@ -207,9 +204,17 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      <ProjectSection title="Software Projects" projects={software} />
-      <ProjectSection title="Fabrication Projects" projects={fab} />
-      <ProjectSection title="Art Projects" projects={art} />
+      <ProjectSection
+        id="software"
+        title="Software Projects"
+        projects={software}
+      />
+      <ProjectSection
+        id="fabrication"
+        title="Fabrication Projects"
+        projects={fab}
+      />
+      {/* <ProjectSection title="Art Projects" projects={art} /> */}
 
       <section>
         <div className="container">

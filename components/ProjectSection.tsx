@@ -4,9 +4,11 @@ import ProjectCardPro from '@/components/ProjectCardPro';
 export default function ProjectSection({
   title,
   projects,
+  id,
 }: {
   title: string;
   projects: Project[];
+  id?: string;
 }) {
   if (!projects.length) return null;
   return (
@@ -23,7 +25,7 @@ export default function ProjectSection({
           }
         }
       `}</style>
-      <section>
+      <section id={id}>
         <div className="container project-section-container">
           <div className="container project-section-container">
             <h1 className="heading_h1">{title}</h1>
