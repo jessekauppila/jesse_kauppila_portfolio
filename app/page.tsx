@@ -5,6 +5,7 @@ import {
   GraphQLFetchError,
 } from '@/lib/fetchProjects';
 import ProjectSection from '@/components/ProjectSection';
+import ContactDropdown from '@/components/ContactDropdown';
 import Image from 'next/image';
 
 // Revalidate this page every 60 seconds
@@ -46,6 +47,24 @@ export default async function HomePage() {
 
   return (
     <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .nav_link.on-accent-primary.w--current {
+          background-color: inherit !important;
+        }
+        .nav_link.on-accent-primary {
+          background-color: inherit;
+        }
+        .nav_menu-list-item {
+          margin-right: 1rem;
+        }
+        .nav_menu-list-item:last-child {
+          margin-right: 0;
+        }
+      `,
+        }}
+      />
       <div className="nav is-accent-primary">
         <div
           data-duration="400"
@@ -130,14 +149,7 @@ export default async function HomePage() {
                   </a>
                 </li>
 
-                <li className="nav_menu-list-item">
-                  <a
-                    href="#"
-                    className="nav_link on-accent-primary w-inline-block"
-                  >
-                    <div>Contact</div>
-                  </a>
-                </li>
+                <ContactDropdown />
               </ul>
             </nav>
           </div>
