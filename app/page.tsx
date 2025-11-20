@@ -123,7 +123,7 @@ export default async function HomePage() {
 
                 <li className="nav_menu-list-item">
                   <a
-                    href="#"
+                    href="#about"
                     className="nav_link on-accent-primary w-inline-block"
                   >
                     <div>About</div>
@@ -216,7 +216,7 @@ export default async function HomePage() {
       />
       {/* <ProjectSection title="Art Projects" projects={art} /> */}
 
-      <section>
+      <section id="about">
         <div className="container">
           <div className="container">
             <div className="w-layout-grid grid_3-col gap-xsmall text-align_center">
