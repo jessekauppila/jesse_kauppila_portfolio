@@ -690,15 +690,35 @@
 }
 
 .paragraph_large {
-  margin-bottom: var(
-    --_typography---base-typography--base-margin-bottom
+  margin-top: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 2
+  );
+  margin-right: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 2
+  );
+  margin-bottom: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 2
+  );
+  margin-left: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 2
+  );
+  padding-top: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 1.5
+  );
+  padding-right: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 1.5
+  );
+  padding-bottom: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 1.5
+  );
+  padding-left: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 1.5
   );
   font-family: var(--_typography---font--body-font);
-  font-size: var(--_typography---text-lg--lg-text-size);
-  line-height: var(--_typography---text-lg--lg-text-line-height);
-  letter-spacing: var(
-    --_typography---text-lg--lg-text-letter-spacing
-  );
+  color: var(--_colors---core-color-tint--neutral-inverse-a50);
+  font-size: var(--_typography---text--text-size);
+  text-align: left;
+  object-fit: contain;
 }
 
 .paragraph_xlarge {
@@ -5565,6 +5585,33 @@
   align-items: stretch;
   margin-bottom: 20px;
   display: flex;
+}
+
+.section-1 {
+  margin-top: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 20
+  );
+  margin-right: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 20
+  );
+  margin-bottom: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 20
+  );
+  margin-left: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 20
+  );
+  padding-top: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 15
+  );
+  padding-right: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 15
+  );
+  padding-bottom: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 15
+  );
+  padding-left: calc(
+    var(--_typography---base-typography--base-margin-bottom) * 15
+  );
 }
 
 .section-2 {

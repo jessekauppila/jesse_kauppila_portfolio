@@ -209,9 +209,9 @@ export default async function HomePage() {
             <div className="w-layout-grid grid_3-col gap-xsmall text-align_center">
               <div className="card card_body padding-bottom_none on-secondary">
                 <div className="flex_vertical gap-small height_100percent">
-                  <section className="section-3">
+                  <section className="section-1">
                     <h1 className="heading_h1 heading_h2">About</h1>
-                    <p className="paragraph">
+                    <p className="paragraph_large">
                       While getting an MFA at Carnegie Mellon my art
                       projects led me to the power of robotics. I then
                       began a career using robots professionally to
