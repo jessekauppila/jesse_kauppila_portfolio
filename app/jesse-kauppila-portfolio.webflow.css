@@ -5589,7 +5589,7 @@
 
 .section-1 {
   margin-top: calc(
-    var(--_typography---base-typography--base-margin-bottom) * 20
+    var(--_typography---base-typography--base-margin-bottom) * 10
   );
   margin-right: calc(
     var(--_typography---base-typography--base-margin-bottom) * 20
@@ -5601,7 +5601,7 @@
     var(--_typography---base-typography--base-margin-bottom) * 20
   );
   padding-top: calc(
-    var(--_typography---base-typography--base-margin-bottom) * 15
+    var(--_typography---base-typography--base-margin-bottom) * 10
   );
   padding-right: calc(
     var(--_typography---base-typography--base-margin-bottom) * 15
@@ -6140,6 +6140,33 @@
     );
     padding-bottom: var(
       --\<unknown\|variable-1f87e264-f699-9eb7-3347-312759955efc\>
+    );
+  }
+
+  .section-1 {
+    margin-top: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 10
+    );
+    margin-right: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 10
+    );
+    margin-bottom: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 10
+    );
+    margin-left: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 10
+    );
+    padding-top: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 5
+    );
+    padding-right: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 5
+    );
+    padding-bottom: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 5
+    );
+    padding-left: calc(
+      var(--_typography---base-typography--base-margin-bottom) * 5
     );
   }
 
