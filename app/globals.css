@@ -14,7 +14,7 @@
   .card .w-layout-grid.grid {
     flex-direction: column !important;
   }
-  
+
   .card .slider-2,
   .card .slider-2.w-slider {
     flex: 1 1 auto !important;
@@ -22,7 +22,7 @@
     margin: 0 !important;
     margin-bottom: 0 !important;
   }
-  
+
   .card .section-3 {
     flex: 1 1 auto !important;
     width: 100% !important;

@@ -39,10 +39,10 @@ export default function ProjectCardPro({
   const sliderRef = useRef<HTMLDivElement>(null);
 
   // State for description expand/collapse
-  // Default to expanded on tablet/PC, collapsed on mobile
+  // Default to expanded above 765px, collapsed below 765px
   const [isExpanded, setIsExpanded] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth >= 768; // Tablet breakpoint
+      return window.innerWidth > 765; // Breakpoint matches layout breakpoint
     }
     return true; // Default to expanded for SSR
   });
@@ -50,10 +50,11 @@ export default function ProjectCardPro({
   // Update expanded state based on window size
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsExpanded(true); // Auto-expand on tablet/PC
-      }
+      setIsExpanded(window.innerWidth > 765); // Expand above 765px, collapse below
     };
+
+    // Set initial state on mount
+    handleResize();
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -192,6 +193,30 @@ export default function ProjectCardPro({
               {/* Right column: Description with expandable dropdown */}
               {project.description || project.descriptionText ? (
                 <div className="paragraph">
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                      transition: 'grid-template-rows 0.3s ease-out',
+                      overflow: 'hidden',
+                    }}
+                    className="description-content"
+                  >
+                    <div style={{ minHeight: 0 }}>
+                      {project.description ? (
+                        // Use RichText component if rich text is available
+                        // This supports links, PDFs, formatting, etc.
+                        <RichTextRenderer
+                          content={project.description}
+                        />
+                      ) : (
+                        // Fallback to plain text if rich text isn't available
+                        <p style={{ whiteSpace: 'pre-line' }}>
+                          {project.descriptionText}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="description-toggle"
@@ -244,30 +269,6 @@ export default function ProjectCardPro({
                       />
                     </svg>
                   </button>
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateRows: isExpanded ? '1fr' : '0fr',
-                      transition: 'grid-template-rows 0.3s ease-out',
-                      overflow: 'hidden',
-                    }}
-                    className="description-content"
-                  >
-                    <div style={{ minHeight: 0 }}>
-                      {project.description ? (
-                        // Use RichText component if rich text is available
-                        // This supports links, PDFs, formatting, etc.
-                        <RichTextRenderer
-                          content={project.description}
-                        />
-                      ) : (
-                        // Fallback to plain text if rich text isn't available
-                        <p style={{ whiteSpace: 'pre-line' }}>
-                          {project.descriptionText}
-                        </p>
-                      )}
-                    </div>
-                  </div>
                 </div>
               ) : (
                 // Empty paragraph if no description
