@@ -202,92 +202,14 @@ export default async function HomePage() {
       <ProjectSection title="Software Projects" projects={software} />
       <ProjectSection title="Fabrication Projects" projects={fab} />
       <ProjectSection title="Art Projects" projects={art} />
-      {/* <section>
-        <div className="container">
-          <div className="container">
-            <h1 className="heading_h1">Software Projects</h1>
-            <div
-              id="w-node-_3ad870d0-35be-1d61-bcd5-f2b25220ad3c-5220ad31"
-              className="w-layout-grid grid_3-col gap-xsmall text-align_center w-node-_02b41635-a2e6-2543-1e3f-a577e175df40-ed364b4d"
-            >
-              <div
-                id="w-node-_3ad870d0-35be-1d61-bcd5-f2b25220ad46-5220ad31"
-                className="card card_body padding-bottom_none on-secondary w-node-_73552ae1-e304-a491-4e71-0ded70d9e571-ed364b4d"
-              >
-                <div className="flex_vertical gap-small height_100percent">
-                  <div className="w-layout-grid grid">
-                    <div
-                      data-delay="4000"
-                      data-animation="slide"
-                      className="slider-2 w-slider"
-                      data-autoplay="false"
-                      data-easing="ease"
-                      data-hide-arrows="false"
-                      data-disable-swipe="false"
-                      data-autoplay-limit="0"
-                      data-nav-spacing="3"
-                      data-duration="500"
-                      data-infinite="true"
-                      id="w-node-_73552ae1-e304-a491-4e71-0ded70d9e574-ed364b4d"
-                    >
-                      <div className="w-slider-mask">
-                        <div className="slide w-slide"></div>
-                        <div className="w-slide"></div>
-                        <div className="w-slide"></div>
-                      </div>
-                      <div className="w-slider-arrow-left">
-                        <div className="w-icon-slider-left"></div>
-                      </div>
-                      <div className="w-slider-arrow-right">
-                        <div className="w-icon-slider-right"></div>
-                      </div>
-                      <div className="w-slider-nav w-round w-num"></div>
-                    </div>
-                    <section className="section-3">
-                      <div className="w-layout-grid grid-2">
-                        <section>
-                          <h1 className="heading_h1 heading_h2">
-                            Test 2
-                          </h1>
-                          <p className="subheading">
-                            Tools: React/Typescript/Mapbox/DeckGL
-                          </p>
-                          <p className="subheading">Client: NWAC</p>
-                        </section>
-                        <p
-                          id="w-node-_461e5244-89b4-6317-4ff7-9dd6de9f1be3-ed364b4d"
-                          className="paragraph"
-                        >
-                          Dive into a selection of projects that blend
-                          creativity with functionality. Experience
-                          sleek, modern aesthetics tailored for
-                          you.asdfas
-                          <br />
-                          <br />
-                          <br />‍
-                        </p>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+
       <section>
         <div className="container">
           <div className="container">
-            <div
-              id="w-node-_3ad870d0-35be-1d61-bcd5-f2b25220ad3c-5220ad31"
-              className="w-layout-grid grid_3-col gap-xsmall text-align_center w-node-_4cccf264-cc36-2aa7-67be-466e60c97e5e-ed364b4d"
-            >
-              <div
-                id="w-node-_3ad870d0-35be-1d61-bcd5-f2b25220ad46-5220ad31"
-                className="card-copy card_body padding-bottom_none on-secondary w-node-_4cccf264-cc36-2aa7-67be-466e60c97e5f-ed364b4d"
-              >
+            <div className="w-layout-grid grid_3-col gap-xsmall text-align_center">
+              <div className="card card_body padding-bottom_none on-secondary">
                 <div className="flex_vertical gap-small height_100percent">
-                  <section id="w-node-_4cccf264-cc36-2aa7-67be-466e60c97e6c-ed364b4d">
+                  <section className="section-3">
                     <h1 className="heading_h1 heading_h2">About</h1>
                     <p className="paragraph">
                       While getting an MFA at Carnegie Mellon my art
@@ -306,9 +228,6 @@ export default async function HomePage() {
                       Northwest Avalanche Center. I continue to work
                       on a variety of personal software, fabrication,
                       and art projects.
-                      <br />
-                      <br />
-                      <br />‍
                     </p>
                   </section>
                 </div>
