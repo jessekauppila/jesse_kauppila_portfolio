@@ -40,20 +40,16 @@ export default function ProjectCardPro({
 
   // State for description expand/collapse
   // Default to expanded above 765px, collapsed below 765px
-  const [isExpanded, setIsExpanded] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 765; // Breakpoint matches layout breakpoint
-    }
-    return true; // Default to expanded for SSR
-  });
+  // Start with false to avoid hydration mismatch, then update after mount
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Update expanded state based on window size
+  // Update expanded state based on window size after mount
   useEffect(() => {
     const handleResize = () => {
       setIsExpanded(window.innerWidth > 765); // Expand above 765px, collapse below
     };
 
-    // Set initial state on mount
+    // Set initial state on mount (after hydration)
     handleResize();
 
     window.addEventListener('resize', handleResize);
