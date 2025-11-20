@@ -85,7 +85,7 @@
   --_typography---h6-heading--h6-line-height: 1.3em;
   --_typography---h6-heading--h6-weight: 700;
   --_typography---h6-heading--h6-letter-spacing: 0.1em;
-  --_typography---base-typography--base-margin-bottom: 0.7em;
+  --_typography---base-typography--base-margin-bottom: 0.1em;
   --_typography---font--body-font: Vollkorn, serif;
   --_typography---text-lg--lg-text-size: 1.1rem;
   --_typography---text-lg--lg-text-line-height: 1.2em;
@@ -3261,7 +3261,7 @@
 }
 
 .paragraph {
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: var(
     --_typography---base-typography--base-margin-bottom
   );
