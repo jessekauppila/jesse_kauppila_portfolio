@@ -9,11 +9,23 @@
   width: 100%;
 }
 
-/* Remove margins on mobile so slider extends to card edges */
-@media (max-width: 767px) {
+/* Stack text below images and remove slider margins below 765px */
+@media (max-width: 765px) {
+  .card .w-layout-grid.grid {
+    flex-direction: column !important;
+  }
+  
+  .card .slider-2,
   .card .slider-2.w-slider {
+    flex: 1 1 auto !important;
+    width: 100% !important;
     margin: 0 !important;
     margin-bottom: 0 !important;
+  }
+  
+  .card .section-3 {
+    flex: 1 1 auto !important;
+    width: 100% !important;
   }
 }
 
