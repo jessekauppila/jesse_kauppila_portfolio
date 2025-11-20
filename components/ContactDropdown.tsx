@@ -38,7 +38,6 @@ export default function ContactDropdown() {
           border: 'none',
           cursor: 'pointer',
           font: 'inherit',
-          color: 'inherit',
         }}
       >
         <div>Contact</div>

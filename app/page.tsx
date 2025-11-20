@@ -56,6 +56,9 @@ export default async function HomePage() {
         .nav_link.on-accent-primary {
           background-color: inherit;
         }
+        button.nav_link.on-accent-primary {
+          color: color-mix(in srgb, currentColor 75%, transparent);
+        }
         .nav_menu-list-item {
           margin-right: 1rem;
         }
