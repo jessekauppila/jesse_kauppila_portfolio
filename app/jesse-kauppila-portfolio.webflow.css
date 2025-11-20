@@ -234,7 +234,7 @@
     --_colors---text-color--text-accent-on-inverse
   );
   --_sizes---gap--xxs-gap: var(--_sizes---spacing--0-5x);
-  --_colors---text-color--text-accent-on-primary: #000;
+  --_colors---text-color--text-accent-on-primary: #333333;
   --_sizes---spacing--0-25x: 0.25rem;
   --_colors---border-color--border-accent: var(
     --_colors---core-accent-color--accent-primary
@@ -327,7 +327,7 @@
   --_colors---nav-link--nav-link-primary: var(
     --_colors---text-color--text-primary
   );
-  --_colors---text-color--text-accent-on-primary-hover: #0009;
+  --_colors---text-color--text-accent-on-primary-hover: #1a1a1a;
   --_colors---text-color--text-accent-on-inverse-hover: #f2f2f299;
   --_colors---text-color--text-on-overlay: var(
     --_colors---core-neutral-color--neutral-primary
@@ -4763,16 +4763,16 @@
 
 .subheading {
   max-width: var(--_sizes---container--container-sm-width);
-  margin-top: 3px;
+  margin-top: 5px;
   margin-bottom: var(--_sizes---spacing--1-25x);
   font-family: var(--_typography---font--body-font);
-  font-size: var(--_typography---text-lg--lg-text-size);
+  font-size: var(--_typography---text-md--md-text-size);
   line-height: var(--_typography---text-lg--lg-text-line-height);
   text-align: left;
   letter-spacing: var(
     --_typography---text-lg--lg-text-letter-spacing
   );
-  color: color-mix(in srgb, currentColor 70%, transparent);
+  color: color-mix(in srgb, currentColor 60%, transparent);
   text-wrap: balance;
   font-weight: 300;
 }

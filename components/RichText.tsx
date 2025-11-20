@@ -82,8 +82,10 @@ export default function RichTextRenderer({
                 <Link
                   href={linkHref as any}
                   target={openInNewTab ? '_blank' : undefined}
-                  rel={openInNewTab ? 'noopener noreferrer' : undefined}
-                  className="text-blue-600 hover:text-blue-800 underline"
+                  rel={
+                    openInNewTab ? 'noopener noreferrer' : undefined
+                  }
+                  className="text-link"
                 >
                   {children}
                 </Link>
@@ -95,7 +97,7 @@ export default function RichTextRenderer({
                 href={linkHref}
                 target={openInNewTab ? '_blank' : undefined}
                 rel={openInNewTab ? 'noopener noreferrer' : undefined}
-                className="text-blue-600 hover:text-blue-800 underline"
+                className="text-link"
               >
                 {children}
               </a>
@@ -182,7 +184,7 @@ export default function RichTextRenderer({
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 underline"
+                    className="text-link"
                   >
                     {node.fileName || 'Download file'}
                   </a>
